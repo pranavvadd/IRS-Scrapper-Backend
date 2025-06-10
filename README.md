@@ -1,0 +1,102 @@
+# IRS Credentialed Professional Scraper
+
+A fully automated, cross-platform web scraper that extracts credentialed tax professionals from the official [IRS Return Preparer Office](https://irs.treasury.gov/rpo/rpo.jsf) site based on dynamic user input. Designed with clean modular architecture and robust input validation, this project utilizes Selenium, pandas, and Python 3 to efficiently collect and export structured data into CSV format.
+
+---
+
+## Key Highlights
+
+- Modular Design: Separated logic into validation, scraping, and utility components for scalability and readability.
+- User-Centric Input Flow: Validates and guides user input interactively with intuitive prompts.
+- Real Data Pipeline: Collects credentialed tax professional data across multiple pages and outputs a clean, structured CSV.
+- Cross-Platform File Access: Automatically opens the output file regardless of OS (macOS, Windows, Linux).
+- Fast and Scalable: Designed to handle multiple pages of results and custom filtering across six credential categories.
+
+---
+
+## Tech Stack
+
+- Language: Python 3.11
+- Libraries: selenium, pandas
+- Browser Automation: ChromeDriver
+- Environment: Cross-platform (tested on macOS and Windows)
+
+---
+
+## Why This Project?
+
+I built this to explore how automation and clean code principles could be applied to real-world datasets provided by government portals. The IRS RPO database offered a non-trivial structure that required form interaction, conditional filtering, and pagination — the perfect challenge for testing my Selenium and data processing skills.
+
+---
+
+## Features in Detail
+
+| Feature               | Description                                                                 |
+|-----------------------|-----------------------------------------------------------------------------|
+| Input Validation       | Ensures users provide valid integers, ZIP codes, and boolean responses     |
+| IRS Website Automation | Interacts with dropdowns, checkboxes, and navigates multiple pages         |
+| Credential Filtering   | Filters by Attorney, CPA, Enrolled Agent, Actuary, and more                |
+| CSV Export             | All results are saved to `output.csv` with structured columns              |
+| File Launcher          | Automatically opens the result in your system’s default CSV viewer         |
+
+---
+
+## Run It Yourself
+
+Requirements:  
+`pip install selenium pandas`
+
+---
+
+## Run Script:
+
+`python main.py`
+
+---
+
+## You’ll be prompted for:
+
+- ZIP Code  
+- Search distance (in miles)  
+- Number of pages to scrape  
+- Which credential types to include (yes/no)  
+
+---
+
+## Code Architecture
+
+- `irs-credential-scraper/`  
+- `main.py` — Orchestrates the workflow from input to output  
+- `input_validation.py` — Handles user interaction and sanitization  
+- `web_scraping.py` — Core Selenium scraping logic  
+- `utils.py` — OS-aware utility for opening CSV  
+- `output.csv` — Exported results (generated after run)  
+- `README.md` — This documentation file  
+
+---
+
+## Lessons and Takeaways
+
+- Learned how to automate interaction with complex web forms using Selenium, including dropdowns, checkboxes, and pagination.  
+- Developed strong input validation techniques to ensure robust user interaction and prevent invalid data entry.  
+- Gained experience structuring a modular Python project for clarity, maintainability, and scalability.  
+- Improved skills in data extraction, cleaning, and exporting to CSV format using pandas.  
+- Learned to handle cross-platform compatibility for launching files in different operating systems.  
+
+---
+
+## Future Enhancements
+
+- I will try to build a frontend website to make this tool accessible online for anyone to use without local setup.  
+- Improve error handling to better manage website load delays and unexpected changes in the IRS site structure.  
+- Add support for exporting data in other formats like Excel or JSON.  
+- Implement multi-threading or asynchronous scraping to speed up data collection.  
+- Enhance filtering options with more detailed credential types and geographic search parameters.  
+
+---
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/yourusername/irs-credential-scraper.git  
+cd irs-credential-scraper
