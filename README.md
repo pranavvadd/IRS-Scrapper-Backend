@@ -25,7 +25,7 @@ A fully automated, cross-platform web scraper that extracts credentialed tax pro
 
 ## Why This Project?
 
-I built this to explore how automation and clean code principles could be applied to real-world datasets provided by government portals. The IRS RPO database offered a non-trivial structure that required form interaction, conditional filtering, and pagination — the perfect challenge for testing my Selenium and data processing skills.
+I built this to explore how automation and clean code principles could be applied to real-world datasets provided by government portals. The IRS RPO database offered a complex structure that required form interaction, conditional filtering, and pagination — the perfect challenge for testing my Selenium and data processing skills.
 
 ---
 
@@ -87,11 +87,11 @@ Requirements:
 
 ## Future Enhancements
 
-- I will try to build a frontend website to make this tool accessible online for anyone to use without local setup.  
-- Improve error handling to better manage website load delays and unexpected changes in the IRS site structure.  
-- Add support for exporting data in other formats like Excel or JSON.  
-- Implement multi-threading or asynchronous scraping to speed up data collection.  
-- Enhance filtering options with more detailed credential types and geographic search parameters.  
+- Improve the scraper’s resilience by implementing robust error handling to better manage website load delays, unexpected changes in the IRS site structure, and element availability issues.
+- Explore replacing Selenium with direct API calls or alternative data sources where possible to increase reliability, reduce maintenance, and speed up data extraction.
+- Add support for exporting data in additional formats such as Excel or JSON to increase flexibility for end users.
+- Implement multi-threading or asynchronous scraping techniques to improve performance and reduce runtime.
+- Enhance filtering options with more detailed credential categories and geographic search parameters to provide more precise results.
 
 ---
 
