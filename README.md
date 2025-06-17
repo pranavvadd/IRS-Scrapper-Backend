@@ -2,6 +2,7 @@
 
 A fully automated, cross-platform web scraper that extracts credentialed tax professionals from the official [IRS Return Preparer Office](https://irs.treasury.gov/rpo/rpo.jsf) site based on dynamic user input. Designed with clean modular architecture and robust input validation, this project utilizes Selenium, pandas, and Python 3 to efficiently collect and export structured data into CSV format.
 
+[Watch Demo Video](https://pranavvadd.github.io/IRS-Scraper-Backend/demo.mp4)
 ---
 
 ## Key Highlights
