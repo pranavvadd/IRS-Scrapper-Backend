@@ -2,7 +2,7 @@
 
 A fully automated, cross-platform web scraper that extracts credentialed tax professionals from the official [IRS Return Preparer Office](https://irs.treasury.gov/rpo/rpo.jsf) site based on dynamic user input. Designed with clean modular architecture and robust input validation, this project utilizes Selenium, pandas, and Python 3 to efficiently collect and export structured data into CSV format.
 
-[Watch Demo Video](https://pranavvadd.github.io/IRS-Scraper-Backend/demo.mp4)
+[Watch Demo Video](https://pranavvadd.github.io/IRS-Scraper-Backend/demo.mp4) *(Outdated: Same functionality, but current CSV styled differently: will update soon)*
 ---
 
 ## Key Highlights
@@ -37,11 +37,20 @@ I built this to explore how automation and clean code principles could be applie
 | Input Validation       | Ensures users provide valid integers, ZIP codes, and boolean responses     |
 | IRS Website Automation | Interacts with dropdowns, checkboxes, and navigates multiple pages         |
 | Credential Filtering   | Filters by Attorney, CPA, Enrolled Agent, Actuary, and more                |
-| CSV Export             | All results are saved to `output.csv` with structured columns              |
+| CSV Export             | All results are saved to `contacts.csv` with structured columns            |
 | File Launcher          | Automatically opens the result in your system’s default CSV viewer         |
 
 ---
 
+## 🆕 New CSV Format Enhancements *(Updated June 27th, 2025)*
+
+These improvements make the CSV easier to use, more structured, and ready for manual enrichment.
+
+- **Separated Name Columns**: Full names are now split into distinct **First Name** and **Last Name** columns. The script automatically detects the comma in names like `"Doe, Jane"` and separates them accordingly.
+- **Manual Entry Fields**: Added two new columns — `Email` and `Phone Number` — which are left **blank** for users to fill out manually. These details are often unavailable or unreliable from the IRS database, making manual entry more practical.
+- **Other Info Consolidation**: Details such as **City**, **Distance**, and other location-related metadata are now grouped into a single column called `Other Info`. This provides helpful context for users while completing contact fields like `Email` and `Phone Number`.
+
+---
 ## Run It Yourself
 
 Requirements:  
@@ -71,7 +80,7 @@ Requirements:
 - `input_validation.py` — Handles user interaction and sanitization  
 - `web_scraping.py` — Core Selenium scraping logic  
 - `utils.py` — OS-aware utility for opening CSV  
-- `output.csv` — Exported results (generated after run)  
+- `contacts.csv` — Exported results (generated after run)  
 - `README.md` — This documentation file  
 
 ---
