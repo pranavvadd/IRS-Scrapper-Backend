@@ -6,6 +6,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 
+print('Script started')
+
+# Function to split full name into first and last names
+def split_name(name):
+    if "," in name:
+        parts = name.split(",", 1)
+        last = parts[0].strip()
+        first = parts[1].strip()
+    else:
+        words = name.split()
+        first = words[0] if len(words) > 0 else ""
+        last = words[1] if len(words) > 1 else ""
+    return pd.Series([first, last])
+
+# Function to scrape IRS data based on user input
 def scrape_irs_data(zip_code, distance, num_pages, include_options):
     driver = webdriver.Chrome()
     driver.get("https://irs.treasury.gov/rpo/rpo.jsf")
@@ -69,12 +84,24 @@ def scrape_irs_data(zip_code, distance, num_pages, include_options):
             cols = row.find_elements(By.TAG_NAME, "td")
             data_list.append([col.text.strip() for col in cols])
 
-    # Convert the data list to a pandas DataFrame
-    df = pd.DataFrame(data_list, columns=["Name", "Credential", "Location", "Distance"])
+    # Convert scraped rows into a DataFrame with full details
+    df_full = pd.DataFrame(data_list, columns=["Name", "Credential", "Location", "Distance"])
 
-    # Write the DataFrame to a CSV file
-    output_file = "output.csv"
-    df.to_csv(output_file, index=False)
+    # Split full name into first and last (last name left blank for user to fill)
+    df_contacts = pd.DataFrame()
+    
+    # Add columns for first name, last name, phone, email, and other info
+    df_contacts[["First Name", "Last Name"]] = df_full["Name"].apply(split_name)
+
+    df_contacts["Phone"] = ""      # User to fill manually
+    df_contacts["Email"] = ""      # User to fill manually
+
+    # Add helper info to assist user in manually finding contact info
+    df_contacts["Other Info"] = df_full.apply(lambda row: f"Credential: {row['Credential']} | Location: {row['Location']} | Distance: {row['Distance']}", axis=1)
+
+    # Write the formatted DataFrame to CSV
+    output_file = "contacts.csv"
+    df_contacts.to_csv(output_file, index=False)
 
     # Close the browser
     driver.quit()

@@ -6,7 +6,11 @@ from utils import open_file
 try:
     user_num_pages = get_valid_int("Enter the number of pages to navigate: ")
     user_zip_code = get_valid_zip("Enter the ZIP code: ")
-    user_distance = get_valid_int("Enter the distance in miles: ")
+    
+    user_distance = get_valid_int("Enter the distance in miles (5, 10, 25, 50, 100, 250): ")
+    while user_distance not in [5, 10, 25, 50, 100, 250]:
+        print("Invalid distance. Please enter one of the following: 5, 10, 25, 50, 100, or 250.")
+        user_distance = get_valid_int("Enter the distance in miles (5, 10, 25, 50, 100, 250): ")
 
     include_options = {
         "Attorney Credentials": get_boolean_input("Do you want to include Attorney Credentials? (yes/no): "),
